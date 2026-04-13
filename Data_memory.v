@@ -1,7 +1,7 @@
 // Code your design here
-module Data_memory(A,WD3,clk,WE,RD);
+module Data_memory(A,WD,clk,WE,RD);
   input [31:0] A,WD;
-  input clk,rst,WE;
+  input clk,WE;
   
   output [31:0]RD;
   
