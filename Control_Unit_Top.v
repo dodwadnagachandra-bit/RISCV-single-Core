@@ -11,13 +11,15 @@ module Control_Unit_Top(Op,RegWrite,ImmSrc,ALUSrc,MemWrite,ResultSrc,Branch,func
 
     wire [1:0]ALUOp;
 
+      // Branch = (Op == 7'b1100011) — computed here so top module can see it
+      assign Branch = (Op == 7'b1100011) ? 1'b1 : 1'b0;
+
     Main_Decoder Main_Decoder(
                 .Op(Op),
                 .RegWrite(RegWrite),
                 .ImmSrc(ImmSrc),
                 .MemWrite(MemWrite),
                 .ResultSrc(ResultSrc),
-                .Branch(Branch),
                 .ALUSrc(ALUSrc),
                 .ALUOp(ALUOp)
     );
