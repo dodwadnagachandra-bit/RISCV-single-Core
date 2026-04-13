@@ -5,7 +5,7 @@
 `include "Instruction_Memory.v"
 `include "register_files.v"
 `include "Sign_Extend.v"
-`include "ALU.v"
+`include "alu.v"
 `include "Control_Unit_Top.v"
 `include "Data_memory.v"
 `include "PC_Adder.v"
