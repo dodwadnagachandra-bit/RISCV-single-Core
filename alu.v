@@ -10,9 +10,9 @@ module alu ( a,b,cntrl,out,Z,N,V,C);
   wire [31:0] a_or_b;
   wire [31:0] not_b;
   
-  wire [31:0] 2to1_mux;
+  wire [31:0] mux2to1;
   wire [31:0] sum;
-  wire [31:0] 4to1_mux;
+  wire [31:0] mux4to1;
   wire cout;
   wire [31:0] slt;
   
@@ -21,15 +21,15 @@ module alu ( a,b,cntrl,out,Z,N,V,C);
   assign not_b = ~b;
   
   //  [2:1] mux design 
-  assign 2to1_mux = (cntrl[0] == 1'b0) ? b : not_b;
+  assign mux2to1 = (cntrl[0] == 1'b0) ? b : not_b;
   
   // Addition / Subtraction (concatenation)
-  assign {cout,sum} = a + 2to1mux + cntrl[0];
+  assign {cout,sum} = a + mux2to1 + cntrl[0];
   
   //  [4:1] mux design 
-  assign 4to1_mux = (cntrl[2:0] == 3'b000) ? sum : (cntrl[2:0] == 3'b001) ? sum: (cntrl[2:0] == 3'b010) ? a_and_b : (cntrl[2:0] == 3'b011) ? a_or_b : (cntrl[2:0] == 3'b101) ? slt : 32'h00000000;
+  assign mux4to1 = (cntrl[2:0] == 3'b000) ? sum : (cntrl[2:0] == 3'b001) ? sum: (cntrl[2:0] == 3'b010) ? a_and_b : (cntrl[2:0] == 3'b011) ? a_or_b : (cntrl[2:0] == 3'b101) ? slt : 32'h00000000;
   
-  assign out = 4to1_mux;
+  assign out = mux4to1;
   
   // Zero flag
   assign Z = &(~out);
