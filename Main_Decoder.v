@@ -1,5 +1,5 @@
 // Main Decoder
-module main_Decoder(op,zero,RegWrite,ResultSrc,MemWrite,AluSrc,PCSrc,ImmSrc,Aluop);
+module Main_Decoder(op,zero,RegWrite,ResultSrc,MemWrite,AluSrc,PCSrc,ImmSrc,Aluop);
   
   input zero;
   input [6:0] op;
