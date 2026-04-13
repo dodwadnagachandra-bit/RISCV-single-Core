@@ -1,5 +1,5 @@
 // 32-bit ALU 
-module alu ( a,b, cntrl,out,Z,N,V,C);
+module alu ( a,b,cntrl,out,Z,N,V,C);
   
   input [31:0] a,b;
   input [2:0] cntrl;
